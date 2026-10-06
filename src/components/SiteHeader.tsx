@@ -14,13 +14,26 @@ export function SiteHeader() {
           <span className="text-[15px] font-extrabold tracking-tight">SUNSTONE</span>
         </Link>
         <nav className="flex items-center gap-1 text-sm text-muted-foreground">
-          <Link to="/" className={linkCls} activeProps={activeCls} activeOptions={{ exact: true }}>Library</Link>
-          <Link to="/play/$gameId/$saveId" params={{ gameId: "emerald-imperium", saveId: "slot-3" }} className={linkCls} activeProps={activeCls}>Play</Link>
-          <Link to="/settings" className={linkCls} activeProps={activeCls}>Settings</Link>
+          <Link to="/" className={linkCls} activeProps={activeCls} activeOptions={{ exact: true }}>
+            Library
+          </Link>
+          <Link
+            to="/play/$gameId/$saveId"
+            params={{ gameId: "emerald-imperium", saveId: "slot-3" }}
+            className={linkCls}
+            activeProps={activeCls}
+          >
+            Play
+          </Link>
+          <Link to="/settings" className={linkCls} activeProps={activeCls}>
+            Settings
+          </Link>
         </nav>
         <div className="ml-auto hidden items-center gap-2 font-mono text-[11px] text-muted-foreground sm:flex">
           <span className="rounded-full border border-border px-2.5 py-1">Dex 142/386</span>
-          <span className="rounded-full border border-sea/30 bg-sea/10 px-2.5 py-1 text-sea">● synced</span>
+          <span className="rounded-full border border-sea/30 bg-sea/10 px-2.5 py-1 text-sea">
+            ● synced
+          </span>
         </div>
       </div>
     </header>
