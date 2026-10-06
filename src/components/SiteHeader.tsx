@@ -30,9 +30,9 @@ export function SiteHeader() {
           </Link>
         </nav>
         <div className="ml-auto hidden items-center gap-2 font-mono text-[11px] text-muted-foreground sm:flex">
-          <span className="rounded-full border border-border px-2.5 py-1">Dex 142/386</span>
-          <span className="rounded-full border border-sea/30 bg-sea/10 px-2.5 py-1 text-sea">
-            ● synced
+          {/* Replace with real sync status once saves persist to NexusBody. */}
+          <span className="rounded-full border border-border px-2.5 py-1">
+            demo data · not synced
           </span>
         </div>
       </div>

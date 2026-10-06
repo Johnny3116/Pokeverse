@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import hero from "@/assets/hero.jpg";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Dialog, DialogOverlay, DialogPortal, DialogTitle } from "@/components/ui/dialog";
 import { games, DEX_TOTAL, type Game } from "@/lib/games";
 
 export const Route = createFileRoute("/")({
@@ -150,37 +152,41 @@ function Progress({ value, color }: { value: number; color: string }) {
 
 function SavePicker({ game, onClose }: { game: Game; onClose: () => void }) {
   return (
-    <div
-      className="fixed inset-0 z-50 grid place-items-center bg-background/70 p-4 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <div className="tile w-full max-w-md !bg-card" onClick={(e) => e.stopPropagation()}>
-        <img src={game.art} alt="" className="h-32 w-full object-cover object-top" />
-        <div className="p-5">
-          <p className="label-mono">Choose a save</p>
-          <h2 className="mt-1 text-xl font-bold">Pokémon {game.title}</h2>
-          <div className="mt-4 space-y-2">
-            {game.saves.map((s) => (
-              <Link
-                key={s.id}
-                to="/play/$gameId/$saveId"
-                params={{ gameId: game.id, saveId: s.id }}
-                className="flex items-center gap-3 rounded-lg border border-border bg-secondary px-3 py-2.5 hover:border-sea/40"
-              >
-                <span className="size-2 rounded-full bg-sea" />
-                <div className="flex-1">
-                  <p className="text-sm font-semibold">{s.name}</p>
-                  <p className="text-xs text-muted-foreground">{s.location}</p>
-                </div>
-                <span className="font-mono text-[11px] text-muted-foreground">{s.playtime}</span>
-              </Link>
-            ))}
-            <button className="w-full rounded-lg border border-dashed border-border px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground">
-              + New save
-            </button>
+    // Radix dialog: closes on Esc / outside click, traps focus, restores it on close.
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogPortal>
+        <DialogOverlay className="bg-background/70 backdrop-blur-sm" />
+        <DialogPrimitive.Content
+          aria-describedby={undefined}
+          className="tile fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 !bg-card"
+        >
+          <img src={game.art} alt="" className="h-32 w-full object-cover object-top" />
+          <div className="p-5">
+            <p className="label-mono">Choose a save</p>
+            <DialogTitle className="mt-1 text-xl font-bold">Pokémon {game.title}</DialogTitle>
+            <div className="mt-4 space-y-2">
+              {game.saves.map((s) => (
+                <Link
+                  key={s.id}
+                  to="/play/$gameId/$saveId"
+                  params={{ gameId: game.id, saveId: s.id }}
+                  className="flex items-center gap-3 rounded-lg border border-border bg-secondary px-3 py-2.5 hover:border-sea/40"
+                >
+                  <span className="size-2 rounded-full bg-sea" />
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold">{s.name}</p>
+                    <p className="text-xs text-muted-foreground">{s.location}</p>
+                  </div>
+                  <span className="font-mono text-[11px] text-muted-foreground">{s.playtime}</span>
+                </Link>
+              ))}
+              <button className="w-full rounded-lg border border-dashed border-border px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground">
+                + New save
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </DialogPrimitive.Content>
+      </DialogPortal>
+    </Dialog>
   );
 }

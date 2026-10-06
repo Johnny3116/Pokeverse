@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import screen from "@/assets/screen.jpg";
 import { getGame, NUZLOCKE_TRACKER_URL } from "@/lib/games";
 
@@ -7,7 +7,9 @@ export const Route = createFileRoute("/play/$gameId/$saveId")({
   loader: ({ params }) => {
     const game = getGame(params.gameId);
     if (!game) throw notFound();
-    const save = game.saves.find((s) => s.id === params.saveId) ?? game.saves[0]!;
+    // Never fall back to another save: once autosave lands, a bad URL would overwrite it.
+    const save = game.saves.find((s) => s.id === params.saveId);
+    if (!save) throw notFound();
     return { game, save };
   },
   head: ({ loaderData }) => {
@@ -26,7 +28,7 @@ export const Route = createFileRoute("/play/$gameId/$saveId")({
   },
   notFoundComponent: () => (
     <p className="p-10 text-center text-muted-foreground">
-      Game not found.{" "}
+      Game or save not found.{" "}
       <Link to="/" className="text-sea">
         Back to library
       </Link>
@@ -59,9 +61,22 @@ function Play() {
   const [notes, setNotes] = useState("Team plan: Marshtomp, Swellow, Gardevoir…");
   const stage = useRef<HTMLDivElement>(null);
 
+  // Leaving fullscreen via Esc or the browser UI should drop back to Normal.
+  useEffect(() => {
+    const onChange = () => {
+      if (!document.fullscreenElement) setMode((m) => (m === "Full" ? "Normal" : m));
+    };
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
   const changeMode = (m: Mode) => {
     setMode(m);
-    if (m === "Full") stage.current?.requestFullscreen?.().catch(() => {});
+    if (m === "Full") {
+      stage.current?.requestFullscreen?.().catch(() => setMode("Normal"));
+    } else if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    }
   };
   const openTracker = () => {
     const w = 520;
