@@ -1,0 +1,97 @@
+{
+  "gameId": "radical-red",
+  "title": "Radical Red",
+  "source": "Progression only (based on FireRed). Replace via data/checklists/radical-red.json.",
+  "categories": [
+    "Badges",
+    "Elite Four"
+  ],
+  "items": [
+    {
+      "id": "badge-boulder",
+      "name": "Boulder Badge",
+      "category": "Badges",
+      "location": "Pewter City",
+      "note": "Gym 1 · Brock"
+    },
+    {
+      "id": "badge-cascade",
+      "name": "Cascade Badge",
+      "category": "Badges",
+      "location": "Cerulean City",
+      "note": "Gym 2 · Misty"
+    },
+    {
+      "id": "badge-thunder",
+      "name": "Thunder Badge",
+      "category": "Badges",
+      "location": "Vermilion City",
+      "note": "Gym 3 · Lt. Surge"
+    },
+    {
+      "id": "badge-rainbow",
+      "name": "Rainbow Badge",
+      "category": "Badges",
+      "location": "Celadon City",
+      "note": "Gym 4 · Erika"
+    },
+    {
+      "id": "badge-soul",
+      "name": "Soul Badge",
+      "category": "Badges",
+      "location": "Fuchsia City",
+      "note": "Gym 5 · Koga"
+    },
+    {
+      "id": "badge-marsh",
+      "name": "Marsh Badge",
+      "category": "Badges",
+      "location": "Saffron City",
+      "note": "Gym 6 · Sabrina"
+    },
+    {
+      "id": "badge-volcano",
+      "name": "Volcano Badge",
+      "category": "Badges",
+      "location": "Cinnabar Island",
+      "note": "Gym 7 · Blaine"
+    },
+    {
+      "id": "badge-earth",
+      "name": "Earth Badge",
+      "category": "Badges",
+      "location": "Viridian City",
+      "note": "Gym 8 · Giovanni"
+    },
+    {
+      "id": "e4-lorelei",
+      "name": "Lorelei",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-bruno",
+      "name": "Bruno",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-agatha",
+      "name": "Agatha",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-lance",
+      "name": "Lance",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "champion-rival",
+      "name": "Champion (Rival)",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    }
+  ]
+}

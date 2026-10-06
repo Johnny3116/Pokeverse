@@ -1,0 +1,25 @@
+{
+  "games": [
+    {
+      "id": "emerald-imperium",
+      "title": "Emerald Imperium",
+      "region": "Hoenn",
+      "rom": "emerald-imperium.gba",
+      "boxArt": "emerald-imperium.webp",
+      "mechanics": "modern",
+      "guideUrl": "https://pokemonemeraldimperium.com/walkthrough/"
+    },
+    {
+      "id": "radical-red",
+      "title": "Radical Red",
+      "region": "Kanto",
+      "rom": "radical-red.gba",
+      "boxArt": "radical-red.jpg",
+      "mechanics": "modern"
+    },
+    { "id": "ruby", "title": "Ruby", "region": "Hoenn", "rom": "ruby.gba", "boxArt": "ruby.webp" },
+    { "id": "sapphire", "title": "Sapphire", "region": "Hoenn", "rom": "sapphire.gba", "boxArt": "sapphire.jpg" },
+    { "id": "firered", "title": "FireRed", "region": "Kanto", "rom": "firered.gba", "boxArt": "firered.webp" },
+    { "id": "leafgreen", "title": "LeafGreen", "region": "Kanto", "rom": "leafgreen.gba", "boxArt": "leafgreen.png" }
+  ]
+}

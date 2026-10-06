@@ -30,3 +30,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vendored EmulatorJS (copied from node_modules by scripts/vendor-emulator.ts)
+public/vendor/
+# Local runtime data
+/data/
+.e2e/
