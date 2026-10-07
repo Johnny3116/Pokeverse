@@ -15,6 +15,8 @@ export default tseslint.config(
       ".e2e",
       ".output",
       ".wrangler",
+      "build",
+      "backups",
     ],
   },
   {

@@ -16,7 +16,7 @@
     "test": "vitest run && bun test server",
     "test:watch": "vitest",
     "e2e": "node scripts/e2e.mjs",
-    "build:server": "bun build server/index.ts --target bun --minify --sourcemap=linked --outfile build/server/index.js"
+    "build:server": "bun build server/index.ts --target bun --minify --sourcemap=linked --outdir build/server"
   },
   "dependencies": {
     "@emulatorjs/core-mgba": "4.2.3",
