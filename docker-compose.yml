@@ -1,25 +1,35 @@
-# PokeVerse on NexusBody.
+# PokeVerse on NexusBody (Windows + Docker Desktop).
 #
+#   copy .env.example .env      # then set POKEVERSE_HOME
 #   docker compose up -d --build
 #
 # The port is bound to localhost only; Tailscale Serve exposes it on the tailnet:
 #   tailscale serve --bg --https=443 http://127.0.0.1:8080
+#
+# Storage layout:
+#   - The database and saves live in the "pokeverse-state" named volume (inside Docker's
+#     disk on NexusBody). SQLite needs real file locking, which Windows folder mounts
+#     don't reliably give it.
+#   - Everything you manage by hand (ROMs, box art, BIOS, guides, checklist overrides)
+#     and the backups live in a normal Windows folder, POKEVERSE_HOME.
 services:
   pokeverse:
     build: .
     image: pokeverse:latest
     container_name: pokeverse
     restart: unless-stopped
-    # Run as the owner of the data/backups folders (Linux: `id -u` / `id -g`).
-    user: "${PUID:-1000}:${PGID:-1000}"
     ports:
       - "127.0.0.1:8080:3001"
     environment:
-      TZ: America/Los_Angeles
+      TZ: ${TZ:-America/Los_Angeles}
     volumes:
-      # ROMs, box art, BIOS, guides, checklists, saves and the database.
-      # Point this at the folder on NexusBody (see README, "Data folder").
-      - ${POKEVERSE_DATA:-./data}:/data
-      # Dated backups from: docker exec pokeverse /app/backup.sh /data /backups
-      # Keep this on a different disk than the data if you can.
-      - ${POKEVERSE_BACKUPS:-./backups}:/backups
+      - pokeverse-state:/data
+      - ${POKEVERSE_HOME:-./pokeverse-files}/library:/data/library:ro
+      - ${POKEVERSE_HOME:-./pokeverse-files}/guides:/data/guides:ro
+      - ${POKEVERSE_HOME:-./pokeverse-files}/checklists:/data/checklists:ro
+      # Filled by: docker exec -u 0 pokeverse /app/backup.sh /data /backups 30
+      - ${POKEVERSE_HOME:-./pokeverse-files}/backups:/backups
+
+volumes:
+  pokeverse-state:
+    name: pokeverse-state

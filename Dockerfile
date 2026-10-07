@@ -21,7 +21,9 @@ COPY --from=build /app/build/server ./server
 COPY --from=build /app/dist ./dist
 COPY checklists ./checklists
 COPY scripts/backup.sh ./backup.sh
-RUN mkdir -p /data /backups && chown bun:bun /data /backups
+# Strip CRLF in case the repo was checked out on Windows without .gitattributes.
+RUN sed -i 's/\r$//' backup.sh && chmod +x backup.sh \
+ && mkdir -p /data /backups && chown bun:bun /data /backups
 USER bun
 VOLUME ["/data", "/backups"]
 EXPOSE 3001

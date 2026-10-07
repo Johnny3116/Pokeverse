@@ -19,7 +19,7 @@ function assertWritable(dir: string) {
     const gid = process.getgid?.() ?? "?";
     console.error(
       `[pokeverse] Data folder ${dir} is not writable by uid ${uid} (gid ${gid}): ${(e as Error).message}\n` +
-        `Fix: chown -R ${uid}:${gid} <your data folder>, or set PUID/PGID in docker-compose to the folder's owner.`,
+        `Fix: make it writable by that user (Linux: chown -R ${uid}:${gid} <folder>). With the bundled docker-compose the data lives in the pokeverse-state volume, which is set up correctly.`,
     );
     process.exit(1);
   }

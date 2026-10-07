@@ -39,3 +39,5 @@ public/vendor/
 build/
 backups/
 .sandbox-ca.crt
+.env
+pokeverse-files/

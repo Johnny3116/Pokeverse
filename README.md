@@ -44,20 +44,27 @@ Bun server  (server/)           one process, one container
 
 ## Data folder
 
-Everything lives under one folder (`DATA_DIR`, mounted at `/data` in Docker). Start by copying [`data.example/`](data.example):
+The app sees one folder, `DATA_DIR` (`/data` in the container). On NexusBody it's split across two places:
 
 ```
-data/
-├── library/
-│   ├── games.json        ← your games (see below)
-│   ├── roms/             ← ROM dumps (.gba, .zip, .7z)
-│   ├── boxart/           ← optional cover images
-│   └── bios/gba_bios.bin ← optional; mGBA has a built-in BIOS replacement
-├── guides/<game-id>/*.md ← optional Markdown walkthroughs, one file per town/route
-├── checklists/<id>.json  ← optional overrides for the built-in checklists
-├── saves/                ← written by the app: SRAM, SRAM history, save states
-└── pokeverse.db          ← written by the app: saves, progress, notes, settings
+D:\Pokeverse\               ← POKEVERSE_HOME, a normal Windows folder you manage
+├── library\
+│   ├── games.json          ← your games (see below)
+│   ├── roms\               ← ROM dumps (.gba, .zip, .7z)
+│   ├── boxart\             ← optional cover images
+│   └── bios\gba_bios.bin   ← optional; mGBA has a built-in BIOS replacement
+├── guides\<game-id>\*.md   ← optional Markdown walkthroughs, one file per town/route
+├── checklists\<id>.json    ← optional overrides for the built-in checklists
+└── backups\                ← daily backup archives
+
+pokeverse-state             ← Docker named volume, written by the app
+├── saves/                  ← SRAM, SRAM history, save states
+└── pokeverse.db            ← saves, progress, notes, settings
 ```
+
+The library, guides and checklists are mounted read-only. The database and saves live in a Docker named volume because SQLite needs reliable file locking, which Windows folder mounts don't guarantee. The volume is still on NexusBody's disk (inside Docker Desktop's storage), and the daily backup copies it out to `backups\`.
+
+For local development everything sits under one `./data` folder instead. Start by copying [`data.example/`](data.example).
 
 ### `games.json`
 
@@ -93,34 +100,54 @@ Built-in checklists exist for `ruby`, `sapphire`, `emerald`, `firered`, `leafgre
 
 **Save types:** mGBA picks the save type from the cartridge's game code. Retail Gen 3 Pokémon carts, and hacks that keep the base game's code, get 128 KB flash, and the end-to-end test checks this.
 
-## Install on NexusBody (Docker)
+## Install on NexusBody (Windows + Docker Desktop)
 
-```sh
-git clone https://github.com/Johnny3116/Pokeverse.git && cd Pokeverse
-cp -r data.example data          # then add ROMs and edit data/library/games.json
+In PowerShell:
+
+```powershell
+git clone https://github.com/Johnny3116/Pokeverse.git
+cd Pokeverse
+powershell -ExecutionPolicy Bypass -File scripts\windows\setup.ps1 -PokeverseHome D:\Pokeverse
+# put ROMs in D:\Pokeverse\library\roms and edit D:\Pokeverse\library\games.json
 docker compose up -d --build
-curl http://127.0.0.1:8080/api/health
+curl.exe http://127.0.0.1:8080/api/health
 
 # Expose it on the tailnet over HTTPS (MagicDNS name):
 tailscale serve --bg --https=443 http://127.0.0.1:8080
+
+# Daily backup at 4 AM, keeping 30 archives:
+powershell -ExecutionPolicy Bypass -File scripts\windows\register-backup-task.ps1
 ```
 
-- **Permissions:** the container runs as `PUID:PGID` (default `1000:1000`). On Linux, either `chown -R 1000:1000 data backups` or set `PUID`/`PGID` to the folders' owner (`id -u` / `id -g`). If the data folder isn't writable, the container exits with a message saying exactly that.
-- To keep the data somewhere else: `POKEVERSE_DATA=/path/to/data POKEVERSE_BACKUPS=/path/to/backups docker compose up -d`.
-- The compose file binds `127.0.0.1:8080` only. Nothing listens on the LAN.
-- **Update:** `git pull && docker compose up -d --build`.
+- `setup.ps1` creates the folders, copies an example `games.json`, and writes `.env` with `POKEVERSE_HOME`. It never overwrites existing files, so it's safe to re-run.
+- The compose file binds `127.0.0.1:8080` only. Nothing listens on the LAN; the tailnet reaches it through Tailscale Serve.
+- **Starting on boot:** turn on *Start Docker Desktop when you sign in* in Docker Desktop's settings. The container has `restart: unless-stopped`, so it comes back with Docker.
+- **After changing `games.json` or adding ROMs:** `docker compose restart`.
+- **Update:** `git pull`, then `docker compose up -d --build`.
+- **Line endings:** `.gitattributes` keeps the container's files on LF even on a Windows checkout, and the image build strips CRLF from `backup.sh` as a backstop.
 
 ### Backups
 
-SRAM loss is the worst case, so back up daily:
+SRAM loss is the worst case. The scheduled task runs this daily, and you can run it by hand at any time:
 
-```sh
-docker exec pokeverse /app/backup.sh /data /backups 30   # keep 30 archives
+```powershell
+docker exec -u 0 pokeverse /app/backup.sh /data /backups 30   # keep 30 archives
 ```
 
-This writes `backups/pokeverse-YYYYMMDD-HHMMSS.tar.gz`, containing a consistent database snapshot plus saves, guides, checklists and `games.json`. ROMs aren't included. Schedule it with cron or Task Scheduler. Each save also keeps its last 20 SRAM versions in `saves/<id>/sram-history/`.
+It writes `D:\Pokeverse\backups\pokeverse-YYYYMMDD-HHMMSS.tar.gz`, containing a consistent database snapshot (safe while you play) plus saves, guides, checklists and `games.json`. ROMs aren't included. Each save also keeps its last 20 SRAM versions inside the volume. Copying `backups\` to another disk or cloud folder is a good idea.
 
-To restore, stop the container, extract the archive over the data folder, and start it again.
+### Restore
+
+This replaces the volume with the contents of an archive. It was tested end to end: the save came back with byte-identical SRAM and the app could write to it.
+
+```powershell
+docker compose down
+docker volume rm pokeverse-state          # deletes current saves; make sure you have the archive
+docker volume create pokeverse-state
+docker run --rm -u 0 --entrypoint sh -v pokeverse-state:/data -v D:/Pokeverse/backups:/backups:ro pokeverse:latest `
+  -c "tar -xzf /backups/pokeverse-YYYYMMDD-HHMMSS.tar.gz -C /tmp && cp -a /tmp/pokeverse/saves /tmp/pokeverse/pokeverse.db /data/ && chown -R 1000:1000 /data"
+docker compose up -d
+```
 
 ## Development
 
