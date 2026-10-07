@@ -1,203 +1,189 @@
-# PokeVerse — Pokémon GBA Web Player
+# PokeVerse
 
-> Personal, single-user web app for playing Gen 3 Pokémon games in the browser, with guides and checklists on the same screen. Files and saves live on NexusBody; access is tailnet-only.
+A private, self-hosted Game Boy Advance player for Gen 3 Pokémon, with guides, checklists and notes next to the game. ROMs and saves live on NexusBody; access is tailnet-only through Tailscale Serve. One user, no accounts. Tailscale is the auth layer.
 
----
+The product spec is in [`docs/MVP.md`](docs/MVP.md).
 
-## 1. Goals
+## What it does
 
-- Pick a game from a library and be playing within a few seconds.
-- Play in normal, theater, or fullscreen mode.
-- See guides and checklists next to the game without switching tabs.
-- Pick up the same save on any device on the tailnet.
+- **Library:** your games from `games.json`, a "continue" card for the last save, and playtime per game.
+- **Saves that follow you:** in-game saves (SRAM) upload automatically a few seconds after you save in the game. They are gzipped, written atomically, and the last 20 versions of each save are kept. Pick the save up on any device on the tailnet.
+- **Save lock:** one device plays a save at a time. Opening it elsewhere asks before taking over, and the old device stops writing.
+- **Save states:** 4 slots per save, with thumbnails.
+- **Play page:** fast-forward, screenshot, volume, integer scaling, and normal, theater or fullscreen view (the side panel becomes a drawer in fullscreen; toggle it with <kbd>`</kbd>).
+- **Side panel:**
+  - Guide: your Markdown files, with a per-save "you are here" marker, or an external walkthrough link.
+  - Checklist: badges, Elite Four, legendaries, HMs and the National Dex, with progress stored per save.
+  - Notes.
+  - Type and nature charts.
+  - A Nuzlocke Tracker link.
+- **Controls:** remappable keyboard and gamepad (stored server-side), plus on-screen touch controls on phones and tablets.
 
-## 2. Non-goals (MVP)
-
-- Multiple users, accounts, or login (Tailscale is the auth layer)
-- Public internet exposure
-- Netplay / link-cable trading
-- Non-GBA systems
-- ROM hacks with custom checklists (supported later)
-
-## 3. Constraints & Assumptions
-
-| Item | Decision |
-|---|---|
-| Users | One (John) |
-| Access | Tailscale only, served over HTTPS via Tailscale Serve (MagicDNS name) |
-| Storage | ROMs, BIOS, saves, guides, checklist templates on NexusBody |
-| Stack | React + TypeScript front end; Bun backend |
-| Emulator core | EmulatorJS (mGBA core) **or** a direct mGBA WASM build — evaluate in spike (see §9) |
-| ROMs | Dumps of carts John owns |
-
----
-
-## 4. Screens
-
-### 4.1 Library (`/`)
-
-- **Continue card** at top: last played game + save, one click to resume.
-- **Game grid:** box art, title, last played, total playtime, checklist progress (e.g. `Dex 142/386`).
-- Click a game → save picker (existing saves + "New save") → Play page.
-
-### 4.2 Play (`/play/:gameId/:saveId`)
-
-**Layout**
+## How it works
 
 ```
-┌───────────────────────────────┬──────────────────┐
-│                               │ [Guide][Check][Notes]
-│        Emulator canvas        │                  │
-│      (integer-scaled)         │   Side panel     │
-│                               │   (collapsible)  │
-├───────────────────────────────┤                  │
-│ Toolbar                       │                  │
-└───────────────────────────────┴──────────────────┘
+Browser (tailnet)
+  │  https://<nexusbody>.<tailnet>.ts.net  (Tailscale Serve → 127.0.0.1:8080)
+  ▼
+Bun server  (server/)           one process, one container
+  ├─ /api/*        JSON + binary API, zod-validated, SQLite (bun:sqlite)
+  ├─ /             React SPA (Vite build, TanStack Router + Query)
+  ├─ /emulator.html  same-origin iframe running EmulatorJS + mGBA (WASM)
+  └─ /vendor/ejs/  EmulatorJS files, served locally (never from a CDN)
+        │
+        ▼
+  /data  (volume on NexusBody)
 ```
 
-**View modes**
+- The emulator runs in its own iframe and talks to the Play page over `postMessage` ([`shared/emulator-protocol.ts`](shared/emulator-protocol.ts)). It loads the ROM and SRAM from the API, polls SRAM every 2 s, and uploads once two polls agree, so a save that's still mid-write in the game never gets uploaded.
+- **Security:**
+  - Path params are validated ids that get looked up in SQLite or `games.json`; file names never come from requests. ([`server/files.ts`](server/files.ts) `safeJoin` is the backstop.)
+  - Every HTML response carries a strict CSP. The emulator page's `connect-src 'self'` stops EmulatorJS from contacting anything off the box.
+  - The server binds to `127.0.0.1` unless `HOST` says otherwise.
+- **Why EmulatorJS:** its mGBA core runs without threads, so the page needs no cross-origin isolation (COOP/COEP). That keeps external guide embeds working and avoids threading problems on iOS Safari.
 
-| Mode | Behavior |
-|---|---|
-| Normal | Emulator + side panel |
-| Theater | Emulator enlarged, panel collapsed to an icon rail |
-| Fullscreen | Fullscreen API on emulator container; side panel available as a slide-out drawer (hotkey) |
+## Data folder
 
-**Toolbar**
-
-- Save state (slots 1–4) / load state
-- Fast-forward toggle
-- Screenshot
-- Mute / volume
-- Integer scaling toggle
-- View mode switch
-- Controls config
-
-**Side panel tabs**
-
-- **Guide** — rendered Markdown walkthrough for the current game
-- **Checklist** — progress for the current save
-- **Notes** — free-text notes per save (team plans, reminders)
-
-### 4.3 Settings (`/settings`)
-
-- Keyboard bindings (remap UI)
-- Gamepad bindings
-- Default view mode, volume, scaling
-- Stored server-side so they follow you across devices
-
----
-
-## 5. Feature Detail
-
-### 5.1 Saves
-
-- **In-game saves (SRAM):** autosave to NexusBody on change (debounced) and on page unload.
-- **Save states:** manual slots with thumbnail + timestamp.
-- **Save lock:** opening a save takes a lock; another device opening it sees "Open on another device — take over?"
-
-### 5.2 Checklists
-
-- Per-game JSON templates, with categories: Pokédex, Badges, Gym Leaders / E4, Legendaries, TMs/HMs, Key Items, Version Exclusives.
-- Progress is stored **per save file**, not per game.
-- Search + filters: uncaught only, by category, by location.
-- MVP progress is manual (click to check). Reading progress from SRAM is a stretch goal.
-
-### 5.3 Guides
-
-- Markdown files on NexusBody, one folder per game.
-- Rendered in the side panel with a table of contents by route/town.
-- "You are here" marker, set manually and saved per save file.
-- Quick-reference widgets: type chart, nature chart.
-
-### 5.4 Input
-
-- Keyboard (remappable)
-- Gamepad API (remappable)
-- On-screen touch controls when a touch device is detected
-
----
-
-## 6. Data Model
+The app sees one folder, `DATA_DIR` (`/data` in the container). On NexusBody it's split across two places:
 
 ```
-Game          { id, title, region, romPath, boxArtPath, guideDir, checklistTemplate }
-SaveFile      { id, gameId, name, sramPath, createdAt, lastPlayedAt, playtimeSec, lock? }
-SaveState     { id, saveId, slot, statePath, thumbnailPath, createdAt }
-ChecklistProg { saveId, itemId, checked, checkedAt }
-Note          { saveId, body, updatedAt }
-GuideMarker   { saveId, sectionId }
-Settings      { keyBindings, padBindings, viewMode, volume, integerScale }
+D:\Pokeverse\               ← POKEVERSE_HOME, a normal Windows folder you manage
+├── library\
+│   ├── games.json          ← your games (see below)
+│   ├── roms\               ← ROM dumps (.gba, .zip, .7z)
+│   ├── boxart\             ← optional cover images
+│   └── bios\gba_bios.bin   ← optional; mGBA has a built-in BIOS replacement
+├── guides\<game-id>\*.md   ← optional Markdown walkthroughs, one file per town/route
+├── checklists\<id>.json    ← optional overrides for the built-in checklists
+└── backups\                ← daily backup archives
+
+pokeverse-state             ← Docker named volume, written by the app
+├── saves/                  ← SRAM, SRAM history, save states
+└── pokeverse.db            ← saves, progress, notes, settings
 ```
 
-## 7. API (Bun backend, front-end contract)
+The library, guides and checklists are mounted read-only. The database and saves live in a Docker named volume because SQLite needs reliable file locking, which Windows folder mounts don't guarantee. The volume is still on NexusBody's disk (inside Docker Desktop's storage), and the daily backup copies it out to `backups\`.
 
-| Method | Route | Purpose |
+For local development everything sits under one `./data` folder instead. Start by copying [`data.example/`](data.example).
+
+### `games.json`
+
+```json
+{
+  "games": [
+    {
+      "id": "radical-red",
+      "title": "Radical Red",
+      "region": "Kanto",
+      "rom": "radical-red.gba",
+      "boxArt": "radical-red.jpg",
+      "mechanics": "modern",
+      "guideUrl": "https://example.com/walkthrough",
+      "checklist": "radical-red"
+    }
+  ]
+}
+```
+
+| Field | Required | Notes |
 |---|---|---|
-| GET | `/api/games` | Library list |
-| GET | `/api/games/:id/rom` | ROM bytes (streamed) |
-| GET | `/api/bios` | BIOS bytes |
-| GET/POST | `/api/games/:id/saves` | List / create save files |
-| GET/PUT | `/api/saves/:id/sram` | Load / write SRAM |
-| POST | `/api/saves/:id/lock` | Acquire / take over lock |
-| GET/PUT | `/api/saves/:id/states/:slot` | Load / write save state |
-| GET/PATCH | `/api/saves/:id/checklist` | Checklist progress |
-| GET/PUT | `/api/saves/:id/notes` | Notes |
-| GET | `/api/games/:id/guide` | Guide index + Markdown |
-| GET/PUT | `/api/settings` | User settings |
+| `id` | yes | lowercase letters, digits and dashes; used in URLs and to pick the checklist |
+| `title` | yes | |
+| `rom` | yes | file name in `library/roms/` |
+| `region` | no | shown on the library card |
+| `boxArt` | no | file name in `library/boxart/`; without it you get a generated title tile |
+| `mechanics` | no | `gen3` (default) or `modern` for hacks with the Gen 6+ type chart and Fairy |
+| `guideUrl` | no | `https://` walkthrough, shown when there's no Markdown guide |
+| `checklist` | no | checklist template id; defaults to `id` |
 
-All write routes validate input (schema validation on body and params). Path params are mapped to IDs, never to raw filesystem paths.
+Built-in checklists exist for `ruby`, `sapphire`, `emerald`, `firered`, `leafgreen`, `radical-red` and `emerald-imperium` (the two hacks cover progression only). Drop `data/checklists/<id>.json` to replace one; the format is the files in [`checklists/`](checklists).
 
----
+**Save types:** mGBA picks the save type from the cartridge's game code. Retail Gen 3 Pokémon carts, and hacks that keep the base game's code, get 128 KB flash, and the end-to-end test checks this.
 
-## 8. Security
+## Install on NexusBody (Windows + Docker Desktop)
 
-- Bind the backend to localhost; expose it only through Tailscale Serve.
-- No ROM, BIOS, or save path is ever built from user input.
-- Set cross-origin isolation headers (COOP/COEP) only if the chosen emulator build requires them.
-- Back up the saves directory on NexusBody on a schedule; SRAM loss is the worst-case failure.
+In PowerShell:
 
----
+```powershell
+git clone https://github.com/Johnny3116/Pokeverse.git
+cd Pokeverse
+powershell -ExecutionPolicy Bypass -File scripts\windows\setup.ps1 -PokeverseHome D:\Pokeverse
+# put ROMs in D:\Pokeverse\library\roms and edit D:\Pokeverse\library\games.json
+docker compose up -d --build
+curl.exe http://127.0.0.1:8080/api/health
 
-## 9. Open Questions / Spikes
+# Expose it on the tailnet over HTTPS (MagicDNS name):
+tailscale serve --bg --https=443 http://127.0.0.1:8080
 
-1. **Emulator choice:** EmulatorJS vs direct mGBA WASM. Check current versions, license, threading/COOP-COEP needs, save-state API, and how easily SRAM can be extracted.
-2. **Audio on mobile Safari:** confirm autoplay/unlock behavior.
-3. **Checklist data source:** hand-written JSON vs generated from a public dataset. Check licensing before generating.
-4. **Lock timeout:** how long before an abandoned lock expires?
+# Daily backup at 4 AM, keeping 30 archives:
+powershell -ExecutionPolicy Bypass -File scripts\windows\register-backup-task.ps1
+```
 
----
+- `setup.ps1` creates the folders, copies an example `games.json`, and writes `.env` with `POKEVERSE_HOME`. It never overwrites existing files, so it's safe to re-run.
+- The compose file binds `127.0.0.1:8080` only. Nothing listens on the LAN; the tailnet reaches it through Tailscale Serve.
+- **Starting on boot:** turn on *Start Docker Desktop when you sign in* in Docker Desktop's settings. The container has `restart: unless-stopped`, so it comes back with Docker.
+- **After changing `games.json` or adding ROMs:** `docker compose restart`.
+- **Update:** `git pull`, then `docker compose up -d --build`.
+- **Line endings:** `.gitattributes` keeps the container's files on LF even on a Windows checkout, and the image build strips CRLF from `backup.sh` as a backstop.
 
-## 10. Milestones
+### Backups
 
-| # | Milestone | Done when |
-|---|---|---|
-| 1 | Emulator spike | One ROM boots in the browser from NexusBody over Tailscale Serve |
-| 2 | Library + Play page | Pick a game → play; view modes work |
-| 3 | Saves | SRAM autosave + save state slots persist across devices |
-| 4 | Side panel | Guide rendering + checklist with per-save progress |
-| 5 | Input + Settings | Remap keys/gamepad; settings sync |
-| 6 | Polish | Touch controls, save lock, backups |
+SRAM loss is the worst case. The scheduled task runs this daily, and you can run it by hand at any time:
 
-## 11. Stretch Goals
+```powershell
+docker exec -u 0 pokeverse /app/backup.sh /data /backups 30   # keep 30 archives
+```
 
-- Auto-detect checklist progress by parsing SRAM
-- Playtime stats per save
-- ROM hack support with custom checklists
-- Screenshot gallery per save
+It writes `D:\Pokeverse\backups\pokeverse-YYYYMMDD-HHMMSS.tar.gz`, containing a consistent database snapshot (safe while you play) plus saves, guides, checklists and `games.json`. ROMs aren't included. Each save also keeps its last 20 SRAM versions inside the volume. Copying `backups\` to another disk or cloud folder is a good idea.
 
----
+### Restore
 
-## 12. Development
+This replaces the volume with the contents of an archive. It was tested end to end: the save came back with byte-identical SRAM and the app could write to it.
 
-Requires [Bun](https://bun.sh).
+```powershell
+docker compose down
+docker volume rm pokeverse-state          # deletes current saves; make sure you have the archive
+docker volume create pokeverse-state
+docker run --rm -u 0 --entrypoint sh -v pokeverse-state:/data -v D:/Pokeverse/backups:/backups:ro pokeverse:latest `
+  -c "tar -xzf /backups/pokeverse-YYYYMMDD-HHMMSS.tar.gz -C /tmp && cp -a /tmp/pokeverse/saves /tmp/pokeverse/pokeverse.db /data/ && chown -R 1000:1000 /data"
+docker compose up -d
+```
+
+## Development
+
+Requires [Bun](https://bun.sh) 1.4+ (Node 22 for the e2e script).
 
 ```sh
 bun install
-bun run dev      # start the dev server
-bun run build    # production build
-bun run test     # run tests (Vitest)
-bun run lint     # ESLint
+cp -r data.example data   # add a ROM to try it
+bun run dev               # API on :3001 + Vite on :5173 (proxying /api)
 ```
 
-**Built with:** TanStack Start, React, TypeScript, Tailwind CSS, Vite. Scaffolded with [Lovable](https://lovable.dev).
+| Command | What it does |
+|---|---|
+| `bun run dev` | API server with watch + Vite dev server |
+| `bun run build` | vendor EmulatorJS into `public/vendor/ejs` and build the SPA into `dist/` |
+| `bun run start` | serve `dist/` + API in production mode |
+| `bun run lint` / `typecheck` | ESLint + Prettier / TypeScript (client and server) |
+| `bun run test` | Vitest (frontend) + `bun test` (server) |
+| `bun run e2e` | Playwright end-to-end run on homebrew test ROMs (needs `bun run build`) |
+
+Environment variables: `PORT` (3001), `HOST` (127.0.0.1), `DATA_DIR` (`./data`), `LIBRARY_DIR` (`$DATA_DIR/library`), `STATIC_DIR` (`./dist`).
+
+The e2e test ([`scripts/e2e.mjs`](scripts/e2e.mjs)) uses MIT-licensed homebrew ROMs from [jsmolka/gba-tests](https://github.com/jsmolka/gba-tests) in `tests/fixtures/`. Commercial ROMs never go in this repository.
+
+### Layout
+
+```
+server/      Bun API + static server (app.ts routes, store.ts saves/locks/SRAM, library.ts)
+shared/      API types/schemas and the emulator postMessage protocol
+src/         React app (routes/, components/play/, emulator/host.ts for the iframe)
+checklists/  built-in checklist templates (generated by scripts/gen-checklists.ts)
+scripts/     dev runner, EmulatorJS vendoring, e2e, backup, checklist generator
+```
+
+## Credits and licenses
+
+- [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) (GPL-3.0) and the [mGBA](https://mgba.io) libretro core, vendored from npm at build time. Their license ships in `dist/vendor/ejs/`.
+- Pokédex names are from [PokéAPI](https://github.com/PokeAPI/pokeapi) (BSD-3-Clause). Pokémon and character names are trademarks of Nintendo / Game Freak / The Pokémon Company.
+- This is a personal project for playing dumps of cartridges you own.

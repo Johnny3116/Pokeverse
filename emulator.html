@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>PokeVerse emulator</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0b1016; overflow: hidden; }
+      #game { width: 100%; height: 100%; }
+      /* Our own toolbar drives the emulator; hide EmulatorJS's chrome. */
+      .ejs_menu_bar, .ejs_context_menu { display: none !important; }
+      #status { position: absolute; inset: 0; display: grid; place-items: center; color: #9aa7b4;
+        font: 13px/1.4 ui-monospace, monospace; text-align: center; padding: 1rem; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="game"></div>
+    <div id="status">Loading…</div>
+    <script type="module" src="/src/emulator/host.ts"></script>
+  </body>
+</html>

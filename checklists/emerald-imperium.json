@@ -1,0 +1,97 @@
+{
+  "gameId": "emerald-imperium",
+  "title": "Emerald Imperium",
+  "source": "Progression only (based on Emerald). Replace via data/checklists/emerald-imperium.json.",
+  "categories": [
+    "Badges",
+    "Elite Four"
+  ],
+  "items": [
+    {
+      "id": "badge-stone",
+      "name": "Stone Badge",
+      "category": "Badges",
+      "location": "Rustboro City",
+      "note": "Gym 1 · Roxanne"
+    },
+    {
+      "id": "badge-knuckle",
+      "name": "Knuckle Badge",
+      "category": "Badges",
+      "location": "Dewford Town",
+      "note": "Gym 2 · Brawly"
+    },
+    {
+      "id": "badge-dynamo",
+      "name": "Dynamo Badge",
+      "category": "Badges",
+      "location": "Mauville City",
+      "note": "Gym 3 · Wattson"
+    },
+    {
+      "id": "badge-heat",
+      "name": "Heat Badge",
+      "category": "Badges",
+      "location": "Lavaridge Town",
+      "note": "Gym 4 · Flannery"
+    },
+    {
+      "id": "badge-balance",
+      "name": "Balance Badge",
+      "category": "Badges",
+      "location": "Petalburg City",
+      "note": "Gym 5 · Norman"
+    },
+    {
+      "id": "badge-feather",
+      "name": "Feather Badge",
+      "category": "Badges",
+      "location": "Fortree City",
+      "note": "Gym 6 · Winona"
+    },
+    {
+      "id": "badge-mind",
+      "name": "Mind Badge",
+      "category": "Badges",
+      "location": "Mossdeep City",
+      "note": "Gym 7 · Tate & Liza"
+    },
+    {
+      "id": "badge-rain",
+      "name": "Rain Badge",
+      "category": "Badges",
+      "location": "Sootopolis City",
+      "note": "Gym 8 · Juan"
+    },
+    {
+      "id": "e4-sidney",
+      "name": "Sidney",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-phoebe",
+      "name": "Phoebe",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-glacia",
+      "name": "Glacia",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-drake",
+      "name": "Drake",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "champion-wallace",
+      "name": "Champion Wallace",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    }
+  ]
+}

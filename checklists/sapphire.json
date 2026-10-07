@@ -1,0 +1,2107 @@
+{
+  "gameId": "sapphire",
+  "title": "Pokémon Sapphire",
+  "source": "Pokédex names from PokéAPI (BSD-3-Clause).",
+  "categories": [
+    "Badges",
+    "Elite Four",
+    "Legendaries",
+    "HMs",
+    "Pokédex"
+  ],
+  "items": [
+    {
+      "id": "badge-stone",
+      "name": "Stone Badge",
+      "category": "Badges",
+      "location": "Rustboro City",
+      "note": "Gym 1 · Roxanne"
+    },
+    {
+      "id": "badge-knuckle",
+      "name": "Knuckle Badge",
+      "category": "Badges",
+      "location": "Dewford Town",
+      "note": "Gym 2 · Brawly"
+    },
+    {
+      "id": "badge-dynamo",
+      "name": "Dynamo Badge",
+      "category": "Badges",
+      "location": "Mauville City",
+      "note": "Gym 3 · Wattson"
+    },
+    {
+      "id": "badge-heat",
+      "name": "Heat Badge",
+      "category": "Badges",
+      "location": "Lavaridge Town",
+      "note": "Gym 4 · Flannery"
+    },
+    {
+      "id": "badge-balance",
+      "name": "Balance Badge",
+      "category": "Badges",
+      "location": "Petalburg City",
+      "note": "Gym 5 · Norman"
+    },
+    {
+      "id": "badge-feather",
+      "name": "Feather Badge",
+      "category": "Badges",
+      "location": "Fortree City",
+      "note": "Gym 6 · Winona"
+    },
+    {
+      "id": "badge-mind",
+      "name": "Mind Badge",
+      "category": "Badges",
+      "location": "Mossdeep City",
+      "note": "Gym 7 · Tate & Liza"
+    },
+    {
+      "id": "badge-rain",
+      "name": "Rain Badge",
+      "category": "Badges",
+      "location": "Sootopolis City",
+      "note": "Gym 8 · Wallace"
+    },
+    {
+      "id": "e4-sidney",
+      "name": "Sidney",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-phoebe",
+      "name": "Phoebe",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-glacia",
+      "name": "Glacia",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "e4-drake",
+      "name": "Drake",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "champion-steven",
+      "name": "Champion Steven",
+      "category": "Elite Four",
+      "location": "Pokémon League"
+    },
+    {
+      "id": "legend-kyogre",
+      "name": "Kyogre",
+      "category": "Legendaries",
+      "location": "Cave of Origin"
+    },
+    {
+      "id": "legend-rayquaza",
+      "name": "Rayquaza",
+      "category": "Legendaries",
+      "location": "Sky Pillar"
+    },
+    {
+      "id": "legend-regirock",
+      "name": "Regirock",
+      "category": "Legendaries",
+      "location": "Desert Ruins"
+    },
+    {
+      "id": "legend-regice",
+      "name": "Regice",
+      "category": "Legendaries",
+      "location": "Island Cave"
+    },
+    {
+      "id": "legend-registeel",
+      "name": "Registeel",
+      "category": "Legendaries",
+      "location": "Ancient Tomb"
+    },
+    {
+      "id": "legend-latias",
+      "name": "Latias",
+      "category": "Legendaries",
+      "location": "Hoenn (roaming)",
+      "note": "Post-game"
+    },
+    {
+      "id": "hm-01",
+      "name": "HM01 Cut",
+      "category": "HMs"
+    },
+    {
+      "id": "hm-02",
+      "name": "HM02 Fly",
+      "category": "HMs"
+    },
+    {
+      "id": "hm-03",
+      "name": "HM03 Surf",
+      "category": "HMs"
+    },
+    {
+      "id": "hm-04",
+      "name": "HM04 Strength",
+      "category": "HMs"
+    },
+    {
+      "id": "hm-05",
+      "name": "HM05 Flash",
+      "category": "HMs"
+    },
+    {
+      "id": "hm-06",
+      "name": "HM06 Rock Smash",
+      "category": "HMs"
+    },
+    {
+      "id": "hm-07",
+      "name": "HM07 Waterfall",
+      "category": "HMs"
+    },
+    {
+      "id": "hm-08",
+      "name": "HM08 Dive",
+      "category": "HMs"
+    },
+    {
+      "id": "dex-001",
+      "name": "#001 Bulbasaur",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-002",
+      "name": "#002 Ivysaur",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-003",
+      "name": "#003 Venusaur",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-004",
+      "name": "#004 Charmander",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-005",
+      "name": "#005 Charmeleon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-006",
+      "name": "#006 Charizard",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-007",
+      "name": "#007 Squirtle",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-008",
+      "name": "#008 Wartortle",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-009",
+      "name": "#009 Blastoise",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-010",
+      "name": "#010 Caterpie",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-011",
+      "name": "#011 Metapod",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-012",
+      "name": "#012 Butterfree",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-013",
+      "name": "#013 Weedle",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-014",
+      "name": "#014 Kakuna",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-015",
+      "name": "#015 Beedrill",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-016",
+      "name": "#016 Pidgey",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-017",
+      "name": "#017 Pidgeotto",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-018",
+      "name": "#018 Pidgeot",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-019",
+      "name": "#019 Rattata",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-020",
+      "name": "#020 Raticate",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-021",
+      "name": "#021 Spearow",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-022",
+      "name": "#022 Fearow",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-023",
+      "name": "#023 Ekans",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-024",
+      "name": "#024 Arbok",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-025",
+      "name": "#025 Pikachu",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-026",
+      "name": "#026 Raichu",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-027",
+      "name": "#027 Sandshrew",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-028",
+      "name": "#028 Sandslash",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-029",
+      "name": "#029 Nidoran♀",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-030",
+      "name": "#030 Nidorina",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-031",
+      "name": "#031 Nidoqueen",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-032",
+      "name": "#032 Nidoran♂",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-033",
+      "name": "#033 Nidorino",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-034",
+      "name": "#034 Nidoking",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-035",
+      "name": "#035 Clefairy",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-036",
+      "name": "#036 Clefable",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-037",
+      "name": "#037 Vulpix",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-038",
+      "name": "#038 Ninetales",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-039",
+      "name": "#039 Jigglypuff",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-040",
+      "name": "#040 Wigglytuff",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-041",
+      "name": "#041 Zubat",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-042",
+      "name": "#042 Golbat",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-043",
+      "name": "#043 Oddish",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-044",
+      "name": "#044 Gloom",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-045",
+      "name": "#045 Vileplume",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-046",
+      "name": "#046 Paras",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-047",
+      "name": "#047 Parasect",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-048",
+      "name": "#048 Venonat",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-049",
+      "name": "#049 Venomoth",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-050",
+      "name": "#050 Diglett",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-051",
+      "name": "#051 Dugtrio",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-052",
+      "name": "#052 Meowth",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-053",
+      "name": "#053 Persian",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-054",
+      "name": "#054 Psyduck",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-055",
+      "name": "#055 Golduck",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-056",
+      "name": "#056 Mankey",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-057",
+      "name": "#057 Primeape",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-058",
+      "name": "#058 Growlithe",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-059",
+      "name": "#059 Arcanine",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-060",
+      "name": "#060 Poliwag",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-061",
+      "name": "#061 Poliwhirl",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-062",
+      "name": "#062 Poliwrath",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-063",
+      "name": "#063 Abra",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-064",
+      "name": "#064 Kadabra",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-065",
+      "name": "#065 Alakazam",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-066",
+      "name": "#066 Machop",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-067",
+      "name": "#067 Machoke",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-068",
+      "name": "#068 Machamp",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-069",
+      "name": "#069 Bellsprout",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-070",
+      "name": "#070 Weepinbell",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-071",
+      "name": "#071 Victreebel",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-072",
+      "name": "#072 Tentacool",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-073",
+      "name": "#073 Tentacruel",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-074",
+      "name": "#074 Geodude",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-075",
+      "name": "#075 Graveler",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-076",
+      "name": "#076 Golem",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-077",
+      "name": "#077 Ponyta",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-078",
+      "name": "#078 Rapidash",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-079",
+      "name": "#079 Slowpoke",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-080",
+      "name": "#080 Slowbro",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-081",
+      "name": "#081 Magnemite",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-082",
+      "name": "#082 Magneton",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-083",
+      "name": "#083 Farfetch’d",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-084",
+      "name": "#084 Doduo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-085",
+      "name": "#085 Dodrio",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-086",
+      "name": "#086 Seel",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-087",
+      "name": "#087 Dewgong",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-088",
+      "name": "#088 Grimer",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-089",
+      "name": "#089 Muk",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-090",
+      "name": "#090 Shellder",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-091",
+      "name": "#091 Cloyster",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-092",
+      "name": "#092 Gastly",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-093",
+      "name": "#093 Haunter",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-094",
+      "name": "#094 Gengar",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-095",
+      "name": "#095 Onix",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-096",
+      "name": "#096 Drowzee",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-097",
+      "name": "#097 Hypno",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-098",
+      "name": "#098 Krabby",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-099",
+      "name": "#099 Kingler",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-100",
+      "name": "#100 Voltorb",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-101",
+      "name": "#101 Electrode",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-102",
+      "name": "#102 Exeggcute",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-103",
+      "name": "#103 Exeggutor",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-104",
+      "name": "#104 Cubone",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-105",
+      "name": "#105 Marowak",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-106",
+      "name": "#106 Hitmonlee",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-107",
+      "name": "#107 Hitmonchan",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-108",
+      "name": "#108 Lickitung",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-109",
+      "name": "#109 Koffing",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-110",
+      "name": "#110 Weezing",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-111",
+      "name": "#111 Rhyhorn",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-112",
+      "name": "#112 Rhydon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-113",
+      "name": "#113 Chansey",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-114",
+      "name": "#114 Tangela",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-115",
+      "name": "#115 Kangaskhan",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-116",
+      "name": "#116 Horsea",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-117",
+      "name": "#117 Seadra",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-118",
+      "name": "#118 Goldeen",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-119",
+      "name": "#119 Seaking",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-120",
+      "name": "#120 Staryu",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-121",
+      "name": "#121 Starmie",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-122",
+      "name": "#122 Mr. Mime",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-123",
+      "name": "#123 Scyther",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-124",
+      "name": "#124 Jynx",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-125",
+      "name": "#125 Electabuzz",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-126",
+      "name": "#126 Magmar",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-127",
+      "name": "#127 Pinsir",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-128",
+      "name": "#128 Tauros",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-129",
+      "name": "#129 Magikarp",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-130",
+      "name": "#130 Gyarados",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-131",
+      "name": "#131 Lapras",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-132",
+      "name": "#132 Ditto",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-133",
+      "name": "#133 Eevee",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-134",
+      "name": "#134 Vaporeon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-135",
+      "name": "#135 Jolteon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-136",
+      "name": "#136 Flareon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-137",
+      "name": "#137 Porygon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-138",
+      "name": "#138 Omanyte",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-139",
+      "name": "#139 Omastar",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-140",
+      "name": "#140 Kabuto",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-141",
+      "name": "#141 Kabutops",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-142",
+      "name": "#142 Aerodactyl",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-143",
+      "name": "#143 Snorlax",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-144",
+      "name": "#144 Articuno",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-145",
+      "name": "#145 Zapdos",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-146",
+      "name": "#146 Moltres",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-147",
+      "name": "#147 Dratini",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-148",
+      "name": "#148 Dragonair",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-149",
+      "name": "#149 Dragonite",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-150",
+      "name": "#150 Mewtwo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-151",
+      "name": "#151 Mew",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-152",
+      "name": "#152 Chikorita",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-153",
+      "name": "#153 Bayleef",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-154",
+      "name": "#154 Meganium",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-155",
+      "name": "#155 Cyndaquil",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-156",
+      "name": "#156 Quilava",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-157",
+      "name": "#157 Typhlosion",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-158",
+      "name": "#158 Totodile",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-159",
+      "name": "#159 Croconaw",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-160",
+      "name": "#160 Feraligatr",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-161",
+      "name": "#161 Sentret",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-162",
+      "name": "#162 Furret",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-163",
+      "name": "#163 Hoothoot",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-164",
+      "name": "#164 Noctowl",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-165",
+      "name": "#165 Ledyba",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-166",
+      "name": "#166 Ledian",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-167",
+      "name": "#167 Spinarak",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-168",
+      "name": "#168 Ariados",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-169",
+      "name": "#169 Crobat",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-170",
+      "name": "#170 Chinchou",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-171",
+      "name": "#171 Lanturn",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-172",
+      "name": "#172 Pichu",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-173",
+      "name": "#173 Cleffa",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-174",
+      "name": "#174 Igglybuff",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-175",
+      "name": "#175 Togepi",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-176",
+      "name": "#176 Togetic",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-177",
+      "name": "#177 Natu",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-178",
+      "name": "#178 Xatu",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-179",
+      "name": "#179 Mareep",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-180",
+      "name": "#180 Flaaffy",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-181",
+      "name": "#181 Ampharos",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-182",
+      "name": "#182 Bellossom",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-183",
+      "name": "#183 Marill",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-184",
+      "name": "#184 Azumarill",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-185",
+      "name": "#185 Sudowoodo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-186",
+      "name": "#186 Politoed",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-187",
+      "name": "#187 Hoppip",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-188",
+      "name": "#188 Skiploom",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-189",
+      "name": "#189 Jumpluff",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-190",
+      "name": "#190 Aipom",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-191",
+      "name": "#191 Sunkern",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-192",
+      "name": "#192 Sunflora",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-193",
+      "name": "#193 Yanma",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-194",
+      "name": "#194 Wooper",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-195",
+      "name": "#195 Quagsire",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-196",
+      "name": "#196 Espeon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-197",
+      "name": "#197 Umbreon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-198",
+      "name": "#198 Murkrow",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-199",
+      "name": "#199 Slowking",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-200",
+      "name": "#200 Misdreavus",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-201",
+      "name": "#201 Unown",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-202",
+      "name": "#202 Wobbuffet",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-203",
+      "name": "#203 Girafarig",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-204",
+      "name": "#204 Pineco",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-205",
+      "name": "#205 Forretress",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-206",
+      "name": "#206 Dunsparce",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-207",
+      "name": "#207 Gligar",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-208",
+      "name": "#208 Steelix",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-209",
+      "name": "#209 Snubbull",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-210",
+      "name": "#210 Granbull",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-211",
+      "name": "#211 Qwilfish",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-212",
+      "name": "#212 Scizor",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-213",
+      "name": "#213 Shuckle",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-214",
+      "name": "#214 Heracross",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-215",
+      "name": "#215 Sneasel",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-216",
+      "name": "#216 Teddiursa",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-217",
+      "name": "#217 Ursaring",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-218",
+      "name": "#218 Slugma",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-219",
+      "name": "#219 Magcargo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-220",
+      "name": "#220 Swinub",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-221",
+      "name": "#221 Piloswine",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-222",
+      "name": "#222 Corsola",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-223",
+      "name": "#223 Remoraid",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-224",
+      "name": "#224 Octillery",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-225",
+      "name": "#225 Delibird",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-226",
+      "name": "#226 Mantine",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-227",
+      "name": "#227 Skarmory",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-228",
+      "name": "#228 Houndour",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-229",
+      "name": "#229 Houndoom",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-230",
+      "name": "#230 Kingdra",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-231",
+      "name": "#231 Phanpy",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-232",
+      "name": "#232 Donphan",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-233",
+      "name": "#233 Porygon2",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-234",
+      "name": "#234 Stantler",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-235",
+      "name": "#235 Smeargle",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-236",
+      "name": "#236 Tyrogue",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-237",
+      "name": "#237 Hitmontop",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-238",
+      "name": "#238 Smoochum",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-239",
+      "name": "#239 Elekid",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-240",
+      "name": "#240 Magby",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-241",
+      "name": "#241 Miltank",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-242",
+      "name": "#242 Blissey",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-243",
+      "name": "#243 Raikou",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-244",
+      "name": "#244 Entei",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-245",
+      "name": "#245 Suicune",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-246",
+      "name": "#246 Larvitar",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-247",
+      "name": "#247 Pupitar",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-248",
+      "name": "#248 Tyranitar",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-249",
+      "name": "#249 Lugia",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-250",
+      "name": "#250 Ho-Oh",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-251",
+      "name": "#251 Celebi",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-252",
+      "name": "#252 Treecko",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-253",
+      "name": "#253 Grovyle",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-254",
+      "name": "#254 Sceptile",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-255",
+      "name": "#255 Torchic",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-256",
+      "name": "#256 Combusken",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-257",
+      "name": "#257 Blaziken",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-258",
+      "name": "#258 Mudkip",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-259",
+      "name": "#259 Marshtomp",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-260",
+      "name": "#260 Swampert",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-261",
+      "name": "#261 Poochyena",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-262",
+      "name": "#262 Mightyena",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-263",
+      "name": "#263 Zigzagoon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-264",
+      "name": "#264 Linoone",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-265",
+      "name": "#265 Wurmple",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-266",
+      "name": "#266 Silcoon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-267",
+      "name": "#267 Beautifly",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-268",
+      "name": "#268 Cascoon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-269",
+      "name": "#269 Dustox",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-270",
+      "name": "#270 Lotad",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-271",
+      "name": "#271 Lombre",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-272",
+      "name": "#272 Ludicolo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-273",
+      "name": "#273 Seedot",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-274",
+      "name": "#274 Nuzleaf",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-275",
+      "name": "#275 Shiftry",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-276",
+      "name": "#276 Taillow",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-277",
+      "name": "#277 Swellow",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-278",
+      "name": "#278 Wingull",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-279",
+      "name": "#279 Pelipper",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-280",
+      "name": "#280 Ralts",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-281",
+      "name": "#281 Kirlia",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-282",
+      "name": "#282 Gardevoir",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-283",
+      "name": "#283 Surskit",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-284",
+      "name": "#284 Masquerain",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-285",
+      "name": "#285 Shroomish",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-286",
+      "name": "#286 Breloom",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-287",
+      "name": "#287 Slakoth",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-288",
+      "name": "#288 Vigoroth",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-289",
+      "name": "#289 Slaking",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-290",
+      "name": "#290 Nincada",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-291",
+      "name": "#291 Ninjask",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-292",
+      "name": "#292 Shedinja",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-293",
+      "name": "#293 Whismur",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-294",
+      "name": "#294 Loudred",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-295",
+      "name": "#295 Exploud",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-296",
+      "name": "#296 Makuhita",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-297",
+      "name": "#297 Hariyama",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-298",
+      "name": "#298 Azurill",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-299",
+      "name": "#299 Nosepass",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-300",
+      "name": "#300 Skitty",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-301",
+      "name": "#301 Delcatty",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-302",
+      "name": "#302 Sableye",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-303",
+      "name": "#303 Mawile",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-304",
+      "name": "#304 Aron",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-305",
+      "name": "#305 Lairon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-306",
+      "name": "#306 Aggron",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-307",
+      "name": "#307 Meditite",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-308",
+      "name": "#308 Medicham",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-309",
+      "name": "#309 Electrike",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-310",
+      "name": "#310 Manectric",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-311",
+      "name": "#311 Plusle",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-312",
+      "name": "#312 Minun",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-313",
+      "name": "#313 Volbeat",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-314",
+      "name": "#314 Illumise",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-315",
+      "name": "#315 Roselia",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-316",
+      "name": "#316 Gulpin",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-317",
+      "name": "#317 Swalot",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-318",
+      "name": "#318 Carvanha",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-319",
+      "name": "#319 Sharpedo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-320",
+      "name": "#320 Wailmer",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-321",
+      "name": "#321 Wailord",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-322",
+      "name": "#322 Numel",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-323",
+      "name": "#323 Camerupt",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-324",
+      "name": "#324 Torkoal",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-325",
+      "name": "#325 Spoink",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-326",
+      "name": "#326 Grumpig",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-327",
+      "name": "#327 Spinda",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-328",
+      "name": "#328 Trapinch",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-329",
+      "name": "#329 Vibrava",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-330",
+      "name": "#330 Flygon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-331",
+      "name": "#331 Cacnea",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-332",
+      "name": "#332 Cacturne",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-333",
+      "name": "#333 Swablu",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-334",
+      "name": "#334 Altaria",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-335",
+      "name": "#335 Zangoose",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-336",
+      "name": "#336 Seviper",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-337",
+      "name": "#337 Lunatone",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-338",
+      "name": "#338 Solrock",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-339",
+      "name": "#339 Barboach",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-340",
+      "name": "#340 Whiscash",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-341",
+      "name": "#341 Corphish",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-342",
+      "name": "#342 Crawdaunt",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-343",
+      "name": "#343 Baltoy",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-344",
+      "name": "#344 Claydol",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-345",
+      "name": "#345 Lileep",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-346",
+      "name": "#346 Cradily",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-347",
+      "name": "#347 Anorith",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-348",
+      "name": "#348 Armaldo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-349",
+      "name": "#349 Feebas",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-350",
+      "name": "#350 Milotic",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-351",
+      "name": "#351 Castform",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-352",
+      "name": "#352 Kecleon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-353",
+      "name": "#353 Shuppet",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-354",
+      "name": "#354 Banette",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-355",
+      "name": "#355 Duskull",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-356",
+      "name": "#356 Dusclops",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-357",
+      "name": "#357 Tropius",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-358",
+      "name": "#358 Chimecho",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-359",
+      "name": "#359 Absol",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-360",
+      "name": "#360 Wynaut",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-361",
+      "name": "#361 Snorunt",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-362",
+      "name": "#362 Glalie",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-363",
+      "name": "#363 Spheal",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-364",
+      "name": "#364 Sealeo",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-365",
+      "name": "#365 Walrein",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-366",
+      "name": "#366 Clamperl",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-367",
+      "name": "#367 Huntail",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-368",
+      "name": "#368 Gorebyss",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-369",
+      "name": "#369 Relicanth",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-370",
+      "name": "#370 Luvdisc",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-371",
+      "name": "#371 Bagon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-372",
+      "name": "#372 Shelgon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-373",
+      "name": "#373 Salamence",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-374",
+      "name": "#374 Beldum",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-375",
+      "name": "#375 Metang",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-376",
+      "name": "#376 Metagross",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-377",
+      "name": "#377 Regirock",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-378",
+      "name": "#378 Regice",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-379",
+      "name": "#379 Registeel",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-380",
+      "name": "#380 Latias",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-381",
+      "name": "#381 Latios",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-382",
+      "name": "#382 Kyogre",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-383",
+      "name": "#383 Groudon",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-384",
+      "name": "#384 Rayquaza",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-385",
+      "name": "#385 Jirachi",
+      "category": "Pokédex"
+    },
+    {
+      "id": "dex-386",
+      "name": "#386 Deoxys",
+      "category": "Pokédex"
+    }
+  ]
+}
