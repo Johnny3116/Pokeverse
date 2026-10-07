@@ -1,0 +1,25 @@
+# PokeVerse on NexusBody.
+#
+#   docker compose up -d --build
+#
+# The port is bound to localhost only; Tailscale Serve exposes it on the tailnet:
+#   tailscale serve --bg --https=443 http://127.0.0.1:8080
+services:
+  pokeverse:
+    build: .
+    image: pokeverse:latest
+    container_name: pokeverse
+    restart: unless-stopped
+    # Run as the owner of the data/backups folders (Linux: `id -u` / `id -g`).
+    user: "${PUID:-1000}:${PGID:-1000}"
+    ports:
+      - "127.0.0.1:8080:3001"
+    environment:
+      TZ: America/Los_Angeles
+    volumes:
+      # ROMs, box art, BIOS, guides, checklists, saves and the database.
+      # Point this at the folder on NexusBody (see README, "Data folder").
+      - ${POKEVERSE_DATA:-./data}:/data
+      # Dated backups from: docker exec pokeverse /app/backup.sh /data /backups
+      # Keep this on a different disk than the data if you can.
+      - ${POKEVERSE_BACKUPS:-./backups}:/backups

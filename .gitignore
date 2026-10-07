@@ -36,3 +36,6 @@ public/vendor/
 # Local runtime data
 /data/
 .e2e/
+build/
+backups/
+.sandbox-ca.crt

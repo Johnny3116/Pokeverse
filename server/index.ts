@@ -1,8 +1,29 @@
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { createApp } from "./app.ts";
 import { loadConfig } from "./config.ts";
 
 const config = loadConfig();
+assertWritable(config.dataDir);
 const app = createApp(config);
+
+/** Fail fast with a fix, instead of a SQLite stack trace, when /data is read-only. */
+function assertWritable(dir: string) {
+  try {
+    mkdirSync(dir, { recursive: true });
+    const probe = resolve(dir, `.write-test-${process.pid}`);
+    writeFileSync(probe, "");
+    rmSync(probe);
+  } catch (e) {
+    const uid = process.getuid?.() ?? "?";
+    const gid = process.getgid?.() ?? "?";
+    console.error(
+      `[pokeverse] Data folder ${dir} is not writable by uid ${uid} (gid ${gid}): ${(e as Error).message}\n` +
+        `Fix: chown -R ${uid}:${gid} <your data folder>, or set PUID/PGID in docker-compose to the folder's owner.`,
+    );
+    process.exit(1);
+  }
+}
 
 const server = Bun.serve({
   hostname: config.host,

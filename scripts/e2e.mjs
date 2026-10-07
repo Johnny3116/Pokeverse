@@ -85,7 +85,9 @@ writeFileSync(
 );
 
 // ---------- server ----------
-const server = spawn("bun", ["server/index.ts"], {
+// E2E_SERVER_ENTRY=<dir>/server/index.js tests the bundled server the Docker image runs;
+// <dir> must also hold dist/ and checklists/ (the image layout).
+const server = spawn("bun", [process.env.E2E_SERVER_ENTRY ?? "server/index.ts"], {
   cwd: root,
   env: { ...process.env, DATA_DIR: data, PORT: String(PORT), NODE_ENV: "production" },
   stdio: ["ignore", "pipe", "pipe"],
